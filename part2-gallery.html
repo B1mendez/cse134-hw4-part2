@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Project Gallery</title>
-  <!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Project Gallery</title>
+    <!--
       Add CSS as you like linked or otherwise, but encapsulate most within the card components.  
 
       You should also include the script code separately.  You may wish to have individual files 
       for the customElement vs the page layout and CRUD actions if you do them. Regardless of 
       what you do you use ES modules and vanilla JS.
     -->
-</head>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script src="/scripts/project-card.js"></script>
+    <script src="/scripts/load-local.js"></script>
 
-<body>
-  <!--
+    <style>
+      h1 {
+        text-align: center;
+        margin: 5rem;
+      }
+      #buttonContainer {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        margin-top: 8rem;
+      }
+
+      #loadLocal,
+      #loadRemote {
+        padding: 10px 20px;
+        font-size: 1em;
+        border: none;
+        color: white;
+        background-color: #007bff;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      #loadLocal:hover,
+      #loadRemote:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Project Gallary HW4-Part2</h1>
+    <hr>
+    <!--
       This page will contain a list of cards which will contain cards that overview each project in 
       your portfolio. You will dynamically create these cards as CustomElements using JavaScript 
       and populate them from localStorage and from a JSON file fetched remotely from a server using 
@@ -70,6 +105,11 @@
       use a local file, CDN or other simple method to load the framework or library. You should not 
       require the grader to install anything or run any build scripts.
     -->
-</body>
 
+    <div id="buttonContainer">
+      <button id="loadLocal">Load Local</button>
+      <button id="loadRemote">Load Remote</button>
+    </div>
+    <div id="cardContainer"></div>
+  </body>
 </html>

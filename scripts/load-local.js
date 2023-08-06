@@ -17,8 +17,9 @@ function loadLocalData() {
 
 function loadRemoteData() {
   const apiKey = "$2b$10$yuR6cSSzXyiF1.WiwEx6Ne39Io7/0pnWfWSa/IQevIoAbtW/Ot/Yu";
-  const url = "https://api.jsonbin.io/b/64cee8b89d312622a38c9203";
+  const url = "https://api.jsonbin.io/v3/b/64cee8b89d312622a38c9203";
   fetch(url, {
+    method: 'GET',
     headers: {
       "X-Master-Key": apiKey,
     },
@@ -41,7 +42,7 @@ function renderCards(data) {
     card.setAttribute("img-alt", item.imageAlt);
     card.setAttribute("description", item.description);
     card.setAttribute("link", item.link);
-    
+
     container.appendChild(card);
   });
 }

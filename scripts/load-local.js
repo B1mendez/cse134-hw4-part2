@@ -11,21 +11,25 @@ function loadLocalData() {
   if (localData) {
     renderCards(localData);
   } else {
-    alert("The following data ${localData} can not be found");
+    alert(`The following data ${JSON.stringify(localData)} cannot be found`);
   }
 }
 
 function loadRemoteData() {
-    const apiKey='$2b$10$yuR6cSSzXyiF1.WiwEx6Ne39Io7/0pnWfWSa/IQevIoAbtW/Ot/Yu'
-    const url='https://api.jsonbin.io/b/64cee8b89d312622a38c9203'
-    fetch(url,{
-    headers:{
-        'X-Master-Key': apiKey,
-    }
+  const apiKey = "$2b$10$yuR6cSSzXyiF1.WiwEx6Ne39Io7/0pnWfWSa/IQevIoAbtW/Ot/Yu";
+  const url = "https://api.jsonbin.io/b/64cee8b89d312622a38c9203";
+  fetch(url, {
+    headers: {
+      "X-Master-Key": apiKey,
+    },
+  })
+    .then((response) => {
+      return response.json();
     })
-    .then(response => {return response.json();})
-    .then(data => {renderCards(data.record);});
-  }
+    .then((data) => {
+      renderCards(data.record);
+    });
+}
 
 function renderCards(data) {
   let container = document.getElementById("cardContainer");
@@ -37,6 +41,7 @@ function renderCards(data) {
     card.setAttribute("img-alt", item.imageAlt);
     card.setAttribute("description", item.description);
     card.setAttribute("link", item.link);
+    
     container.appendChild(card);
   });
 }
@@ -63,11 +68,11 @@ function projectStorage() {
       imageAlt: "An image of the Better Times Tutoring Logo",
       description: "This is a description for Project 3.",
       link: "https://bettertimestutoring.com/",
-    }
+    },
   ];
 
-  let localProjectData = localStorage.setItem("projectData", JSON.stringify(projectExamples));
-
-  localStorage.setItem("projectData", localProjectData);
+  localStorage.setItem("projectData", JSON.stringify(projectExamples));
 }
+
+window.addEventListener('DOMContentLoaded', projectStorage);
 window.addEventListener("DOMContentLoaded", init);
